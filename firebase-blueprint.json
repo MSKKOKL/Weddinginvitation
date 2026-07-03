@@ -1,0 +1,112 @@
+{
+  "entities": {
+    "WeddingInvitation": {
+      "title": "WeddingInvitation",
+      "description": "Schema for a wedding invitation card",
+      "type": "object",
+      "properties": {
+        "groomName": {
+          "type": "string",
+          "description": "Name of the groom"
+        },
+        "brideName": {
+          "type": "string",
+          "description": "Name of the bride"
+        },
+        "weddingDate": {
+          "type": "string",
+          "description": "The date of the wedding"
+        },
+        "weddingTime": {
+          "type": "string",
+          "description": "The time of the wedding"
+        },
+        "venue": {
+          "type": "string",
+          "description": "Venue location"
+        },
+        "receptionDetails": {
+          "type": "string",
+          "description": "Optional reception details and schedule"
+        },
+        "theme": {
+          "type": "string",
+          "description": "Design theme: islamic, royal, floral, minimal, boho",
+          "enum": ["islamic", "royal", "floral", "minimal", "boho"]
+        },
+        "photoUrl": {
+          "type": "string",
+          "description": "Featured couple photo URL"
+        },
+        "musicUrl": {
+          "type": "string",
+          "description": "Background instrumental music URL"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update"
+        },
+        "groomParents": {
+          "type": "string",
+          "description": "Parents of the groom"
+        },
+        "brideParents": {
+          "type": "string",
+          "description": "Parents of the bride"
+        },
+        "welcomeMessage": {
+          "type": "string",
+          "description": "Introductory or welcoming statement"
+        }
+      },
+      "required": ["groomName", "brideName", "weddingDate", "venue", "theme"]
+    },
+    "GuestRSVP": {
+      "title": "GuestRSVP",
+      "description": "Schema for RSVP submission from guests",
+      "type": "object",
+      "properties": {
+        "invitationId": {
+          "type": "string",
+          "description": "The ID of the wedding invitation card this RSVP belongs to"
+        },
+        "guestName": {
+          "type": "string",
+          "description": "The name of the attending guest or family"
+        },
+        "status": {
+          "type": "string",
+          "description": "RSVP status choice",
+          "enum": ["attending", "declined", "maybe"]
+        },
+        "guestCount": {
+          "type": "integer",
+          "description": "Number of guests attending"
+        },
+        "message": {
+          "type": "string",
+          "description": "Custom blessings, advice, or comments for the couple"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of when the RSVP was submitted"
+        }
+      },
+      "required": ["invitationId", "guestName", "status", "guestCount"]
+    }
+  },
+  "firestore": {
+    "/invitations/{invitationId}": {
+      "schema": "WeddingInvitation",
+      "description": "Individual wedding invitation cards created by hosts"
+    },
+    "/rsvps/{rsvpId}": {
+      "schema": "GuestRSVP",
+      "description": "RSVP responses submitted by invited guests"
+    }
+  }
+}

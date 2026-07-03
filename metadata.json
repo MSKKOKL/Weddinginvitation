@@ -1,0 +1,6 @@
+{
+  "name": "Wedding Invite Builder",
+  "description": "Create beautiful digital wedding invitations with premium themes, RSVP, background music, Google Maps integration, live preview, and instant sharing. 100% Free.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
